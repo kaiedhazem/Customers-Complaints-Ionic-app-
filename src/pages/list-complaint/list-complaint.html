@@ -1,0 +1,47 @@
+
+<ion-header>
+  <ion-navbar>
+    <div>
+    <img class="circular--square" height="50px" width="50px" src="assets/imgs/logo2.png" > &nbsp; &nbsp;
+    <ion-title div="title">Complaint list</ion-title> 
+  </div>
+    <ion-buttons end>    <button ion-button class="logout" (click)="myLogOut()"   > Log out &nbsp;<ion-icon color ="#00CCFF" name="exit"></ion-icon></button> </ion-buttons>
+ </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <div  *ngFor=" let rec of myComplain">
+
+
+    <ion-list >
+
+        <ion-item class="box">
+
+          <h2><ion-row ><div class="tile"> Type : &nbsp; </div> {{rec.type}} </ion-row> </h2>
+          <h2 ><ion-row> <div class="tile"> Description: &nbsp;</div>  {{rec.description}}</ion-row> </h2>
+          <h2  *ngIf="rec.avancement === 'Pending Team leader validation'"><ion-row><div class="tile"> Progress : &nbsp;</div> In progress </ion-row></h2>
+          <h2 *ngIf="rec.avancement != 'Pending Team leader validation'" ><ion-row><div class="tile"> Progress : &nbsp;</div>  {{rec.avancement}}</ion-row></h2>
+          <h2><ion-row><div class="tile"> Project: &nbsp; </div>{{rec.nameProjet}}</ion-row> </h2>
+          <h2><ion-row><div class="tile"> Created : &nbsp;</div> {{ rec.created_at | date: "dd/MM/yyyy" }} </ion-row></h2>
+          <h2><ion-row><div class="tile"> Progress: &nbsp;</div> <span *ngIf="rec.progress != 100" class="danger" >{{ rec.progress }}%</span> 
+            <span *ngIf="rec.progress == 100" class="success" >{{ rec.progress }}%</span> &nbsp;
+            <ion-icon class="green" *ngIf="rec.progress == 100" color="success" name="md-checkmark-circle"></ion-icon>
+
+           </ion-row></h2>
+          
+          
+            <div class="first">
+              <div [style.width.%]="rec.progress" class="second" ></div>
+            </div>
+      
+          
+      </ion-item>
+      <hr>
+    </ion-list>
+
+  </div>
+  
+</ion-content>
+

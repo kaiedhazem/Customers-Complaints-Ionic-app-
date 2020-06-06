@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <div>
+    <img class="circular--square" height="50px" width="50px" src="assets/imgs/logo2.png" > &nbsp; &nbsp;
+    <ion-title div="title"></ion-title> 
+  </div>
+    <ion-buttons end>    <button ion-button class="logout" (click)="myLogOut()"   > Log out &nbsp;<ion-icon color ="#00CCFF" name="exit"></ion-icon></button> </ion-buttons>
+ </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h1>Your Projects:</h1>
+  
+  <div  *ngFor=" let pro of ProjectClient">
+
+    <ion-list >
+
+        <ion-item class="box">
+
+          <h2><ion-row ><div class="tile"> Name : &nbsp; </div> {{pro.name}} </ion-row> </h2>
+  
+        
+          <h2><ion-row><div class="tile"> Progress: &nbsp;</div> <span *ngIf="pro.progress != 100" class="danger" >{{ pro.progress }}%</span> 
+            <span *ngIf="pro.progress == 100" class="success" >{{ pro.progress }}%</span> &nbsp;
+            <ion-icon *ngIf="pro.progress == 100" class="green" name="md-checkmark-circle"></ion-icon>
+
+           </ion-row></h2>
+          
+          
+            <div class="first">
+              <div [style.width.%]="pro.progress" class="second" ></div>
+            </div>
+      
+          
+      </ion-item>
+      <hr>
+    </ion-list>
+
+  </div>
+  
+</ion-content>
