@@ -15,12 +15,28 @@ export class HomePage {
   rootPage:any = TabsPage;
   ProjectClient:any;
   width: any;
+  Nbproject : any;
+  NbComplaint : any;
   constructor(public navCtrl: NavController,public authService:AuthProvider, public complaint :ComplaintProvider) {
- if (localStorage.token !=''){  this.complaint. ProjectClient().then((data)=>{
+ if (localStorage.token !='')
+ {  this.complaint. ProjectClient().then((data)=>{
    // console.log(JSON.stringify(data))
       this.ProjectClient=data["projects"];
+
      
      })
+     this.complaint.NombreProjectClient().then((data)=>{
+      // console.log(JSON.stringify(data))
+         this.Nbproject=data["projects"];
+   
+        
+        })
+        this.complaint.NombreComplaintClient().then((data)=>{
+          // console.log(JSON.stringify(data))
+             this.NbComplaint=data["comp"];
+       
+            
+            })
     }
     
   }

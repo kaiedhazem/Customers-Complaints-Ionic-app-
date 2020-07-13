@@ -17,9 +17,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { ComplaintProvider } from '../providers/complaint/complaint';
 import { FileTransfer } from '@ionic-native/file-transfer';
-import {FileChooser} from '@ionic-native/file-chooser';
-import {File} from '@ionic-native/file';
-import {FilePath} from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { HTTP } from '@ionic-native/http';
+import { Camera } from '@ionic-native/camera';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+//import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,14 +34,14 @@ import {FilePath} from '@ionic-native/file-path';
     LoginPage,
     FillPage,
     ListComplaintPage,
-
-    AddPage
+    AddPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpModule
+    HttpModule,
+ 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,12 +59,16 @@ import {FilePath} from '@ionic-native/file-path';
     StatusBar,
     SplashScreen,
     AuthProvider,
-    FileTransfer,
+    
     FileChooser,
     File,
     FilePath,
     ComplaintProvider,
+    HTTP,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FileTransfer,
+    WebView
   ]
 })
 export class AppModule {}

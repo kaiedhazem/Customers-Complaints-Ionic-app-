@@ -1,27 +1,44 @@
 <ion-header>
   <ion-navbar>
     <div>
-    <img class="circular--square" height="50px" width="50px" src="assets/imgs/logo2.png" > &nbsp; &nbsp;
-    <ion-title div="title"></ion-title> 
+    <!--img class="circular--square" height="50px" width="50px" src="assets/imgs/logo2.png"--> 
+    <h2 style="float: left;"> Home</h2> 
   </div>
-    <ion-buttons end>    <button ion-button class="logout" (click)="myLogOut()"   > Log out &nbsp;<ion-icon color ="#00CCFF" name="exit"></ion-icon></button> </ion-buttons>
+    <ion-buttons end>    <button ion-button class="logout" (click)="myLogOut()"   > Log out &nbsp;<ion-icon color ="#07b4af" name="exit"></ion-icon></button> </ion-buttons>
  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <h1>Your Projects:</h1>
-  
+  <!--div class="espace">
+  <h3> <ion-icon  md="md-construct"> </ion-icon> &nbsp; Projects :{{ Nbproject }}  </h3> 
+
+  <h3> <ion-icon  md="md-person"></ion-icon> &nbsp; Complaints : {{ NbComplaint }} </h3>
+
+  <div class="cercle" style="float: left; margin-left: 10%;">
+   <h2 style=" margin-top: 10px;"> <ion-icon  md="md-construct"></ion-icon> </h2>
+    <h4 *ngIf=" Nbproject == 1">{{ Nbproject }}  Project</h4>
+    <h4 *ngIf=" Nbproject > 1">{{ Nbproject }}  Projects</h4>
+  </div>
+   <div class="cercle" style="float: right; margin-right: 8%;">
+   
+    <h2 style=" margin-top: 10px;"> <ion-icon  md="md-person"></ion-icon> </h2>
+    <h4 *ngIf=" NbComplaint == 1"> {{ NbComplaint }}  Complaint</h4> 
+    <h4 *ngIf=" NbComplaint > 1"> {{ NbComplaint }}  Complaints</h4>
+  </div>
+</div-->
+
+<h1> Your projects :</h1>
   <div  *ngFor=" let pro of ProjectClient">
 
     <ion-list >
 
         <ion-item class="box">
 
-          <h2><ion-row ><div class="tile"> Name : &nbsp; </div> {{pro.name}} </ion-row> </h2>
+          <h2><ion-row ><div class="t"> <b> Name :</b> &nbsp; &nbsp; </div> {{pro.name}} </ion-row> </h2>
   
         
-          <h2><ion-row><div class="tile"> Progress: &nbsp;</div> <span *ngIf="pro.progress != 100" class="danger" >{{ pro.progress }}%</span> 
+          <h2><ion-row><div class="t"> <b> Progress:</b> &nbsp; &nbsp; </div> <span *ngIf="pro.progress != 100" class="danger" >{{ pro.progress }}%</span> 
             <span *ngIf="pro.progress == 100" class="success" >{{ pro.progress }}%</span> &nbsp;
             <ion-icon *ngIf="pro.progress == 100" class="green" name="md-checkmark-circle"></ion-icon>
 

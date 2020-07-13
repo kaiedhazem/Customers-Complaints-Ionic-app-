@@ -74,7 +74,7 @@ export class ComplaintProvider {
 
 
   }
-  AddComplain(complain,file) {
+  AddComplain(complain) {
     return new Promise((resolve, reject) => {
       let formData = new FormData();
       let   value =    localStorage.getItem('token')
@@ -85,17 +85,17 @@ export class ComplaintProvider {
              headers.append('Content-type', 'multipart/form-data');
               headers.append('X-Requested-With','XMLHttpRequest');
          headers.append('Authorization','Bearer '+value);
-           this.http.post('http://stark-beyond-68322.herokuapp.com/api/reclamation',JSON.stringify(complain),{headers: headers}).toPromise().
-           then(()=> this.http.post('http://stark-beyond-68322.herokuapp.com/api/complainfile',JSON.stringify(file),{headers: headers})
+           this.http.post('http://stark-beyond-68322.herokuapp.com/api/reclamation',JSON.stringify(complain),{headers: headers})
            .map(res=>res.json())
            .subscribe(data => {
                resolve(data);
       }, (err) => {
                reject(err);
 
-           }));
+           });
             });
           }
+         
             ProjectClient(){
               return new Promise((resolve, reject) => {
           
@@ -116,4 +116,44 @@ export class ComplaintProvider {
           
             
      }
+     NombreProjectClient(){
+      return new Promise((resolve, reject) => {
+  
+     let value = localStorage.getItem('token')
+            let headers = new Headers();
+      headers.append('Access-Control-Allow-Origin' , '*');
+        headers.append('Accept','application/json');
+        headers.append('Authorization','Bearer '+value);
+          this.http.get('http://stark-beyond-68322.herokuapp.com/api/Nprojectsc',{headers: headers})
+          .map(res=>res.json())
+          .subscribe(data => {
+              resolve(data);
+     }, (err) => {
+              reject(err);
+  
+            });  });
+  
+  
+    
+}
+NombreComplaintClient(){
+  return new Promise((resolve, reject) => {
+
+ let value = localStorage.getItem('token')
+        let headers = new Headers();
+  headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Accept','application/json');
+    headers.append('Authorization','Bearer '+value);
+      this.http.get('http://stark-beyond-68322.herokuapp.com/api/NcomplaintsC',{headers: headers})
+      .map(res=>res.json())
+      .subscribe(data => {
+          resolve(data);
+ }, (err) => {
+          reject(err);
+
+        });  });
+
+
+
+}
   }
