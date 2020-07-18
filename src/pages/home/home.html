@@ -2,7 +2,7 @@
   <ion-navbar>
     <div>
     <!--img class="circular--square" height="50px" width="50px" src="assets/imgs/logo2.png"--> 
-    <h2 style="float: left;"> Home</h2> 
+    <h2 style="float: left; color: #07b4af;"> Home</h2> 
   </div>
     <ion-buttons end>    <button ion-button class="logout" (click)="myLogOut()"   > Log out &nbsp;<ion-icon color ="#07b4af" name="exit"></ion-icon></button> </ion-buttons>
  </ion-navbar>
@@ -11,9 +11,7 @@
 <ion-content padding>
 
   <!--div class="espace">
-  <h3> <ion-icon  md="md-construct"> </ion-icon> &nbsp; Projects :{{ Nbproject }}  </h3> 
-
-  <h3> <ion-icon  md="md-person"></ion-icon> &nbsp; Complaints : {{ NbComplaint }} </h3>
+  
 
   <div class="cercle" style="float: left; margin-left: 10%;">
    <h2 style=" margin-top: 10px;"> <ion-icon  md="md-construct"></ion-icon> </h2>
@@ -26,9 +24,12 @@
     <h4 *ngIf=" NbComplaint == 1"> {{ NbComplaint }}  Complaint</h4> 
     <h4 *ngIf=" NbComplaint > 1"> {{ NbComplaint }}  Complaints</h4>
   </div>
+  
 </div-->
-
-<h1> Your projects :</h1>
+<hr>
+<h4 style="color: #07b4af; font-family: Verdana, Arial, Tahoma, Serif;">  <ion-icon  md="md-construct"></ion-icon> &nbsp; Total projects : <i style="color: #000;">{{ Nbproject }}  Project</i>  </h4>
+ <hr>
+<h4 style="font-family: Verdana, Arial, Tahoma, Serif;"> Projects advancement : </h4> <hr>
   <div  *ngFor=" let pro of ProjectClient">
 
     <ion-list >

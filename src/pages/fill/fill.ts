@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { ComplaintProvider } from '../../providers/complaint/complaint';
 import { ListComplaintPage } from '../list-complaint/list-complaint';
 import { FormGroup } from '@angular/forms';
+import { LoginPage } from '../login/login';
+import { AuthProvider } from '../../providers/auth/auth';
+import { TabsPage } from '../tabs/tabs';
+
 /**
  * Generated class for the FillPage page.
  *
@@ -16,6 +20,7 @@ declare var cordova: any;
   templateUrl: 'fill.html',
 })
 export class FillPage  {
+  rootPage:any = TabsPage;
   uploadForm: FormGroup;  
   myRec = {
     type:'' ,
@@ -29,7 +34,7 @@ export class FillPage  {
    photoUrl: any=null;
    fileInput: any=null;
    constructor(public navCtrl: NavController, public navParams: NavParams,public complaint: ComplaintProvider
-    ,public toastCtrl: ToastController ) {
+    ,public toastCtrl: ToastController ,public authService:AuthProvider,) {
      this.complaint.Type().then((data)=>{
          this.mood=data["type"];
         })
@@ -85,6 +90,12 @@ export class FillPage  {
        console.log("insert err: "+ err)
        console.log("this.myInfo: "+ JSON.stringify(this.myRec))
      })
+    }
+    myLogOut(){
+      this.authService.logout();
+      this.rootPage=LoginPage;
+      this.navCtrl.push(LoginPage);
+      location.reload();
     }
 }
 
